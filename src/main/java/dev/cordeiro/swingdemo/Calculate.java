@@ -14,7 +14,7 @@ public class Calculate
 
 }
 
-class AddSub extends JFrame implements ActionListener {
+class AddSub extends JFrame{
 
     JTextField t1, t2;
     JButton b1,b2;
@@ -38,8 +38,22 @@ class AddSub extends JFrame implements ActionListener {
         add(lbl);
 
 
-        b1.addActionListener(this);
-        b2.addActionListener(this);
+        b1.addActionListener( e -> {
+            int num1 = Integer.parseInt(t1.getText());
+            int num2 = Integer.parseInt(t2.getText());
+
+            int result = num1 + num2;
+
+            lbl.setText(result + "");
+        });
+        b2.addActionListener( e -> {
+            int num1 = Integer.parseInt(t1.getText());
+            int num2 = Integer.parseInt(t2.getText());
+
+            int result = num1 - num2;
+
+            lbl.setText(result + "");
+        });
 
 
         setLayout(new FlowLayout());
@@ -50,26 +64,4 @@ class AddSub extends JFrame implements ActionListener {
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        int num1 = Integer.parseInt(t1.getText());
-        int num2 = Integer.parseInt(t2.getText());
-
-        if(e.getSource().equals(b1)){
-
-
-            int result = num1 + num2;
-
-            lbl.setText(result + "");
-        }
-        else if(e.getSource().equals(b2)){
-            int result = num1 - num2;
-
-            lbl.setText(result + "");
-
-        }
-
-
-
-    }
 }
